@@ -1,5 +1,4 @@
 import { BaseEditor, Editor } from "slate";
-import { ReactEditor } from "slate-react";
 
 export function getActiveStyles(editor: BaseEditor) {
   return new Set(Object.keys(Editor.marks(editor) ?? {}));

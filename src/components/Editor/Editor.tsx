@@ -17,7 +17,7 @@ export function Editor(props: {
 }) {
   const { document, onChange } = props;
   const editor = useMemo(() => withReact(createEditor()), []);
-  const { renderElement, renderLeaf } = useEditorConfig(editor);
+  const { renderElement, renderLeaf, onKeyDown } = useEditorConfig(editor);
   const [selection, setSelection] = useSelection(editor);
 
   const onChangeHandler = useCallback(
@@ -34,7 +34,11 @@ export function Editor(props: {
   return (
     <Slate editor={editor} value={props.document} onChange={onChangeHandler}>
       <Toolbar selection={selection} />
-      <Editable renderElement={renderElement} renderLeaf={renderLeaf} />
+      <Editable
+        renderElement={renderElement}
+        renderLeaf={renderLeaf}
+        onKeyDown={onKeyDown}
+      />
     </Slate>
   );
 }
