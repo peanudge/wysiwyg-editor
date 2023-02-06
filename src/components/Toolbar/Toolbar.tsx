@@ -1,10 +1,14 @@
-import { Button, Dropdown, DropdownButton } from "react-bootstrap";
+import React from "react";
+import { Button, ButtonProps, Dropdown, DropdownButton } from "react-bootstrap";
+import { useEditor } from "slate-react";
+import { getActiveStyles, toggleStyle } from "../../utils/EditorUtils";
 import "./Toolbar.css";
 
 const PARAGRAPH_STYLES = ["h1", "h2", "h3", "h4", "paragraph", "multiple"];
 const CHARACTER_STYLES = ["bold", "italic", "underline", "code"];
 
 export function Toolbar({ selection, previousSelection }: any) {
+  const editor = useEditor();
   return (
     <div className="toolbar">
       <DropdownButton
@@ -20,13 +24,23 @@ export function Toolbar({ selection, previousSelection }: any) {
         ))}
       </DropdownButton>
       {CHARACTER_STYLES.map((style) => (
-        <ToolBarButton key={style} icon={<p>{style}</p>} isActive={false} />
+        <ToolBarButton
+          key={style}
+          icon={<p>{style}</p>}
+          isActive={getActiveStyles(editor).has(style)}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            toggleStyle(editor, style);
+          }}
+        />
       ))}
     </div>
   );
 }
 
-function ToolBarButton(props: any) {
+function ToolBarButton(
+  props: ButtonProps & { icon: React.ReactNode; isActive: boolean }
+) {
   const { icon, isActive, ...otherProps } = props;
   return (
     <Button

@@ -24,7 +24,6 @@ function App() {
         </Navbar.Brand>
       </Navbar>
       <div className="App">
-        <Toolbar />
         <Editor document={document} onChange={updateDocument} />
       </div>
     </>
