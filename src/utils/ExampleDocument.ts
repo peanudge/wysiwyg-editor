@@ -1,4 +1,6 @@
-const ExampleDocument = [
+import { Descendant } from "slate";
+
+const ExampleDocument: Descendant[] = [
   {
     type: "paragraph",
     children: [

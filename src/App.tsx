@@ -2,9 +2,11 @@ import { useState } from "react";
 import ExampleDocument from "./utils/ExampleDocument";
 import { Navbar } from "react-bootstrap";
 import logo from "./logo.svg";
-import Editor from "./components/Editor";
+import { Editor } from "./components/Editor";
+import { Descendant } from "slate";
+
 function App() {
-  const [document, updateDocument] = useState(ExampleDocument);
+  const [document, updateDocument] = useState<Descendant[]>(ExampleDocument);
 
   return (
     <>
