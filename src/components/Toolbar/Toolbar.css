@@ -1,0 +1,22 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.toolbar-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.toolbar-btn p {
+  padding: 0;
+  margin: 0;
+}
+
+.block-style-dropdown {
+  margin-right: 1rem;
+}

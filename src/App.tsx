@@ -4,6 +4,7 @@ import { Navbar } from "react-bootstrap";
 import logo from "./logo.svg";
 import { Editor } from "./components/Editor";
 import { Descendant } from "slate";
+import { Toolbar } from "./components/Toolbar";
 
 function App() {
   const [document, updateDocument] = useState<Descendant[]>(ExampleDocument);
@@ -23,6 +24,7 @@ function App() {
         </Navbar.Brand>
       </Navbar>
       <div className="App">
+        <Toolbar />
         <Editor document={document} onChange={updateDocument} />
       </div>
     </>
