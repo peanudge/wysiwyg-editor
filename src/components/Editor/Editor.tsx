@@ -1,10 +1,4 @@
-import {
-  withReact,
-  Slate,
-  Editable,
-  DefaultElement,
-  useSelected,
-} from "slate-react";
+import { withReact, Slate, Editable } from "slate-react";
 import { createEditor, Descendant } from "slate";
 import { useCallback, useMemo } from "react";
 import useEditorConfig from "../../hook/useEditorConfig";
@@ -22,6 +16,7 @@ export function Editor(props: {
 
   const onChangeHandler = useCallback(
     (document: Descendant[]) => {
+      console.log(document);
       onChange && onChange(document);
       /**
        * NOTE: As selection changes in the editor, SlateJS does call the onChange method,
